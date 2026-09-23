@@ -25,6 +25,12 @@ The implementation combines:
 
 ![MambaRec Framework](images/MambaRec_framework.png)
 
+
+## Implementation Note
+
+This repository is an implementation/reproduction of the MambaRec research work.
+The original method and research contribution belong to the authors cited above.
+
 ## Dataset
 
 The experiments use multimodal recommendation datasets containing:
@@ -90,11 +96,6 @@ CIKM 2025.
 ```
 
 Paper: https://arxiv.org/abs/2509.09114
-
-## Implementation Note
-
-This repository is an implementation/reproduction of the MambaRec research work.
-The original method and research contribution belong to the authors cited above.
 
 ## Acknowledgements
 
