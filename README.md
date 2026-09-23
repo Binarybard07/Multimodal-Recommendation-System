@@ -1,36 +1,96 @@
-# MambaRec
-![](https://img.shields.io/badge/version-1.0.1-blue)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/rkl71/MambaRec/blob/master/LICENSE)
-[![arxiv badge](https://img.shields.io/badge/arxiv-2509.09114-red)](https://arxiv.org/abs/2509.09114)
-[![Pytorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?e&logo=PyTorch&logoColor=white)](https://pytorch.org/)
-[![CIKM](https://img.shields.io/badge/CIKM-2025-%23bd9f65?labelColor=%233d4cac&color=%23dd2167)](https://www.cikm2025.org/)
+# MambaRec — Multimodal Recommendation System
 
-## Introduction
+Implementation of **MambaRec**, a multimodal recommendation framework that combines user–item interactions with textual and visual item features for personalized Top-K recommendation.
 
->**[CIKM 2025]** Kelin Ren, Chan-Yang Ju, and Dong-Ho Lee(2025). Modality Alignment with Multi-scale Bilateral Attention for
- Multimodal Recommendation
-<img src="images/MambaRec_framework.png" width="800px" height="350px"/>
+[![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?logo=PyTorch\&logoColor=white)](https://pytorch.org/)
+[![CIKM 2025](https://img.shields.io/badge/CIKM-2025-blue)](https://www.cikm2025.org/)
+[![arXiv](https://img.shields.io/badge/arXiv-2509.09114-red)](https://arxiv.org/abs/2509.09114)
 
-## Enviroment Requirement
-- Python 3.8 (ubuntu20.04)
-- Pytorch 1.11.0
-- CUDA 11.3
+## Overview
 
-## Dataset  
-Download from Google Drive: [Baby/Sports/Clothing](https://drive.google.com/drive/folders/13cBy1EA_saTUuXxVllKgtfci2A09jyaG?usp=sharing)  
-The data comprises text and image features extracted from Sentence-Transformers and CNN.  
+This repository implements the architecture proposed in:
 
-## How to run
-1. Place the downloaded data (e.g. `baby`) into the `data` directory.
-2. Enter the `src` folder and execute the following command:  
-`python main.py -m MambaRec -d baby`  
+> **Kelin Ren, Chan-Yang Ju, and Dong-Ho Lee (2025).**
+> *Modality Alignment with Multi-scale Bilateral Attention for Multimodal Recommendation.*
+> **CIKM 2025**
 
-Other parameters can be set either through the command line or by using the configuration files located in `configs/model/MambaRec.yaml` and `configs/dataset/*.yaml`.
+The implementation combines:
 
-## Performance Comparison
-<div align="center">
-    <img src="images/MambaRec_results.png" width="750px" height="300px">
-</div>
+* **Graph-based collaborative filtering** for user–item interactions
+* **Textual and visual item representations**
+* **DREAM multi-scale bilateral attention** for multimodal feature refinement
+* **BPR loss** for recommendation optimization
+* **InfoNCE contrastive learning** for cross-modal alignment
+* **MMD loss** for distribution-level modality alignment
 
-## Acknowledgement
-The structure of this code is inspired by the [MMRec](https://github.com/enoche/MMRec) framework. We acknowledge and appreciate their valuable contributions.
+![MambaRec Framework](images/MambaRec_framework.png)
+
+## Dataset
+
+The experiments use multimodal recommendation datasets containing:
+
+* User–item interaction data
+* Precomputed **text features** extracted using Sentence Transformers
+* Precomputed **image features** extracted using CNN-based models
+
+Supported datasets:
+
+* **Baby**
+* **Sports**
+* **Clothing**
+
+Dataset files can be obtained from the original project resources.
+
+## Environment
+
+* Python 3.8
+* PyTorch 1.11.0
+* CUDA 11.3
+* Ubuntu 20.04
+
+## Running the Model
+
+Place the downloaded dataset inside the `data` directory.
+
+Then enter the `src` directory and run:
+
+```bash
+python main.py -m MambaRec -d baby
+```
+
+The model and dataset configurations can be modified through:
+
+```text
+configs/model/MambaRec.yaml
+configs/dataset/*.yaml
+```
+
+Replace `baby` with `sports` or `clothing` to run the corresponding dataset.
+
+## Evaluation
+
+The model evaluates personalized Top-K recommendation performance using:
+
+* **Recall@K**
+* **NDCG@K**
+* **Precision@K**
+* **MAP@K**
+
+The implementation follows the experimental setup described in the original CIKM 2025 paper.
+
+![MambaRec Results](images/MambaRec_results.png)
+
+## Reference
+
+```text
+Kelin Ren, Chan-Yang Ju, and Dong-Ho Lee.
+"Modality Alignment with Multi-scale Bilateral Attention for
+Multimodal Recommendation."
+CIKM 2025.
+```
+
+Paper: https://arxiv.org/abs/2509.09114
+
+## Acknowledgements
+
+The project structure is inspired by the [MMRec](https://github.com/enoche/MMRec) framework. We acknowledge their contribution to the development of the multimodal recommendation research ecosystem.
