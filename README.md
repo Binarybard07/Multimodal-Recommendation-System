@@ -91,6 +91,11 @@ CIKM 2025.
 
 Paper: https://arxiv.org/abs/2509.09114
 
+## Implementation Note
+
+This repository is an implementation/reproduction of the MambaRec research work.
+The original method and research contribution belong to the authors cited above.
+
 ## Acknowledgements
 
 The project structure is inspired by the [MMRec](https://github.com/enoche/MMRec) framework. We acknowledge their contribution to the development of the multimodal recommendation research ecosystem.
